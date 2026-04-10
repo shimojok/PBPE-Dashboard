@@ -1,4 +1,3 @@
-```python
 """
 PBPE Coffee Impact Calculation Engine
 Complete mathematical models for climate finance market creation
@@ -695,4 +694,3 @@ if __name__ == "__main__":
         print(f"Certification: {credit.certification_level.value.upper()}")
     
     print("\n" + "=" * 60)
-```
