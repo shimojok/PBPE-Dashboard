@@ -130,6 +130,16 @@ $$M_{PBPE} = \prod_{l=1}^{4} (1 + \mu_l) = 17.8 \times 1.4 \times 1.8 \times 2.1
 
 ---
 
+## 📚 Detailed Documentation
+
+For a comprehensive mathematical and theoretical framework, see:
+- [Integrated PBPE Model: Climate Finance Innovation System](./docs/en/07_Integrated_PBPE_Model.md)
+- [PBPE Architecture Deep Dive](./docs/en/01_PBPE_Architecture.md)
+- [Capital Flow Maps & Financial Models](./docs/en/03_Capital_Flow_Maps.md)
+- [Impact Metrics & MRV Framework](./docs/en/04_Impact_Metrics.md)
+
+---
+
 ## 🤝 Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
