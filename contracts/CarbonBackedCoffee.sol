@@ -1,4 +1,3 @@
-```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
@@ -209,4 +208,3 @@ contract CarbonBackedCoffee is ERC721, AccessControl, Pausable {
         carbonPriceOracle = newOracle;
     }
 }
-```
