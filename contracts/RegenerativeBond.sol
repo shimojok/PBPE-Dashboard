@@ -1,4 +1,3 @@
-```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
@@ -374,4 +373,3 @@ contract RegenerativeBond is ERC20, AccessControl, ReentrancyGuard {
 
     receive() external payable {}
 }
-```
