@@ -1,4 +1,3 @@
-```json
 {
   "bindings": [
     {
@@ -26,4 +25,3 @@
   ],
   "scriptFile": "../dist/SafelyChainVerification/index.js"
 }
-```
