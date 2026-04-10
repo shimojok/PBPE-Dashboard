@@ -1,5 +1,7 @@
 # Contributing to PBPE-Dashboard
 
+**Languages:** [English](./CONTRIBUTING.md) | [日本語](./CONTRIBUTING_JA.md)
+
 Thank you for your interest in contributing to the Planetary Bio-Phenome Engine (PBPE) project!
 
 ## 🌍 Our Mission
