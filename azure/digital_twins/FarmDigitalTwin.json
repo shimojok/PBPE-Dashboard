@@ -1,0 +1,233 @@
+{
+  "@id": "dtmi:com:pbpe:Farm;1",
+  "@type": "Interface",
+  "@context": "dtmi:dtdl:context;2",
+  "displayName": "PBPE Farm Digital Twin",
+  "description": "Digital twin model for PBPE-enabled coffee farm",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "farmId",
+      "schema": "string",
+      "description": "Unique farm identifier"
+    },
+    {
+      "@type": "Property",
+      "name": "farmName",
+      "schema": "string",
+      "description": "Farm name"
+    },
+    {
+      "@type": "Property",
+      "name": "location",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "latitude",
+            "schema": "double"
+          },
+          {
+            "name": "longitude",
+            "schema": "double"
+          },
+          {
+            "name": "elevation",
+            "schema": "double"
+          }
+        ]
+      },
+      "description": "Geographic location"
+    },
+    {
+      "@type": "Property",
+      "name": "areaHectares",
+      "schema": "double",
+      "description": "Total farm area in hectares"
+    },
+    {
+      "@type": "Property",
+      "name": "coffeeVariety",
+      "schema": "string",
+      "description": "Coffee variety planted"
+    },
+    {
+      "@type": "Property",
+      "name": "plantingYear",
+      "schema": "integer",
+      "description": "Year of planting"
+    },
+    {
+      "@type": "Property",
+      "name": "treeDensity",
+      "schema": "integer",
+      "description": "Trees per hectare"
+    },
+    {
+      "@type": "Property",
+      "name": "mbtt55Applied",
+      "schema": "boolean",
+      "description": "Whether MBT55 has been applied"
+    },
+    {
+      "@type": "Property",
+      "name": "mbtt55ApplicationDate",
+      "schema": "dateTime",
+      "description": "Date of MBT55 application"
+    },
+    {
+      "@type": "Property",
+      "name": "certificationLevel",
+      "schema": {
+        "@type": "Enum",
+        "enumValues": [
+          {
+            "name": "Bronze",
+            "enumValue": 1
+          },
+          {
+            "name": "Silver",
+            "enumValue": 2
+          },
+          {
+            "name": "Gold",
+            "enumValue": 3
+          },
+          {
+            "name": "Platinum",
+            "enumValue": 4
+          }
+        ]
+      },
+      "description": "PBPE certification level"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "soilMoisture",
+      "schema": "double",
+      "unit": "percent",
+      "description": "Soil moisture percentage"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "soilTemperature",
+      "schema": "double",
+      "unit": "celsius",
+      "description": "Soil temperature"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "soilPH",
+      "schema": "double",
+      "description": "Soil pH level"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "soilOrganicCarbon",
+      "schema": "double",
+      "unit": "percent",
+      "description": "Soil organic carbon percentage"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "carbonSequestrationRate",
+      "schema": "double",
+      "unit": "tonneCO2ePerHectarePerYear",
+      "description": "Carbon sequestration rate"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "rustIncidence",
+      "schema": "double",
+      "unit": "percent",
+      "description": "Coffee leaf rust incidence rate"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "yieldProjection",
+      "schema": "double",
+      "unit": "kilogramPerHectare",
+      "description": "Projected yield"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "ndviIndex",
+      "schema": "double",
+      "description": "Normalized Difference Vegetation Index"
+    },
+    {
+      "@type": "Command",
+      "name": "requestCarbonVerification",
+      "description": "Request carbon sequestration verification",
+      "request": {
+        "name": "verificationPeriod",
+        "schema": "string"
+      },
+      "response": {
+        "name": "verificationResult",
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "verificationHash",
+              "schema": "string"
+            },
+            {
+              "name": "carbonSequestered",
+              "schema": "double"
+            },
+            {
+              "name": "status",
+              "schema": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "@type": "Command",
+      "name": "mintPBPECredit",
+      "description": "Mint PBPE carbon credit",
+      "request": {
+        "name": "creditAmount",
+        "schema": "double"
+      },
+      "response": {
+        "name": "mintingResult",
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "creditId",
+              "schema": "string"
+            },
+            {
+              "name": "transactionHash",
+              "schema": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "@type": "Relationship",
+      "name": "contains",
+      "description": "Contains field plots",
+      "target": "dtmi:com:pbpe:FieldPlot;1",
+      "maxMultiplicity": 100
+    },
+    {
+      "@type": "Relationship",
+      "name": "managedBy",
+      "description": "Managed by farmer",
+      "target": "dtmi:com:pbpe:Farmer;1",
+      "maxMultiplicity": 1
+    },
+    {
+      "@type": "Relationship",
+      "name": "suppliesTo",
+      "description": "Supplies coffee to processor",
+      "target": "dtmi:com:pbpe:Processor;1"
+    }
+  ]
+}
