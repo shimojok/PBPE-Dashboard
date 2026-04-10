@@ -1,4 +1,3 @@
-```typescript
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
 import { createHash, randomBytes } from "crypto";
 import { ConfidentialLedgerClient } from "@azure/arm-confidentialledger";
@@ -187,4 +186,3 @@ async function submitToConfidentialLedger(record: any): Promise<void> {
 }
 
 export default httpTrigger;
-```
