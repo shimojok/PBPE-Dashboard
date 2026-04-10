@@ -1,4 +1,3 @@
-```json
 {
   "name": "pbpe-dashboard",
   "version": "1.0.0",
@@ -41,4 +40,3 @@
     "npm": ">=9.0.0"
   }
 }
-```
