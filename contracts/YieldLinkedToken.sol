@@ -1,4 +1,3 @@
-```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
@@ -194,4 +193,3 @@ contract YieldLinkedToken is ERC20, AccessControl, ReentrancyGuard {
         yieldOracle = newOracle;
     }
 }
-```
