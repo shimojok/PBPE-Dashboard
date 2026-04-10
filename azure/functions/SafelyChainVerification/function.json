@@ -1,0 +1,29 @@
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["post"],
+      "route": "verify"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "verificationRecord",
+      "databaseName": "PBPE",
+      "collectionName": "Verifications",
+      "createIfNotExists": true,
+      "connectionStringSetting": "CosmosDBConnection"
+    }
+  ],
+  "scriptFile": "../dist/SafelyChainVerification/index.js"
+}
+```
