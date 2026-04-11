@@ -52,7 +52,12 @@ const CarbonLedger: React.FC<CarbonLedgerProps> = ({ simplified = false }) => {
       const data: CarbonData[] = [];
       const now = new Date();
       let cumulative = 1250000;
-      
+
+    // timeRange に応じてデータ点数を変更
+    const days = timeRange === '7d' ? 7 : 
+                 timeRange === '30d' ? 30 : 
+                 timeRange === '90d' ? 90 : 365;
+
       for (let i = 30; i >= 0; i--) {
         const date = new Date(now);
         date.setDate(date.getDate() - i);

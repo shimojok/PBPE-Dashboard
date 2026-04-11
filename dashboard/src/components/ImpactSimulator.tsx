@@ -59,8 +59,19 @@ const ImpactSimulator: React.FC = () => {
   const [activeScenario, setActiveScenario] = useState<'baseline' | 'mbtt55' | 'comparison'>('comparison');
 
   useEffect(() => {
-    simulate();
-  }, [params]);
+  // activeScenario に応じてパラメータを自動設定
+  if (activeScenario === 'baseline') {
+    setParams(prev => ({ ...prev, mbtt55Applied: false }));
+  } else if (activeScenario === 'mbtt55') {
+    setParams(prev => ({ ...prev, mbtt55Applied: true }));
+  }
+  // simulate() は params の変更を検知して自動実行される
+}, [activeScenario]);  // activeScenario が変わったときも実行
+
+// params が変わったらシミュレーション実行
+useEffect(() => {
+  simulate();
+}, [params]);
 
   const simulate = () => {
     const results: SimulationResult[] = [];
