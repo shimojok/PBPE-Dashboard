@@ -145,6 +145,8 @@
     background: var(--color-surface);
     border-right: 1px solid #e0e0e0;
     padding: 1.5rem 1rem;
+    position: relative;  /* fixed や absolute を relative に変更 */
+    z-index: 10;         /* 必要に応じて調整 */
   }
 
   .main-content {

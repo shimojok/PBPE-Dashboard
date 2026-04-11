@@ -11,7 +11,9 @@ import {
   Legend,
   ResponsiveContainer,
   ComposedChart,
+  BarChart,
   Bar,
+  Cell, 
 } from 'recharts';
 
 interface WeatherData {
