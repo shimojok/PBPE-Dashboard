@@ -4,19 +4,19 @@
 
 @layer base {
   :root {
-    --color-primary: #2e7d32;
-    --color-primary-light: #4caf50;
-    --color-primary-dark: #1b5e20;
-    --color-secondary: #1565c0;
-    --color-accent: #ff6f00;
-    --color-background: #f5f7fa;
-    --color-surface: #ffffff;
-    --color-text-primary: #1a1a1a;
-    --color-text-secondary: #666666;
-    --color-success: #4caf50;
-    --color-warning: #ff9800;
-    --color-error: #f44336;
-    --color-info: #2196f3;
+    --color-primary: #4caf50;
+    --color-primary-light: #81c784;
+    --color-primary-dark: #2e7d32;
+    --color-secondary: #42a5f5;
+    --color-accent: #ffa726;
+    --color-background: #121212;
+    --color-surface: #1e1e1e;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #b0b0b0;
+    --color-success: #66bb6a;
+    --color-warning: #ffa726;
+    --color-error: #ef5350;
+    --color-info: #42a5f5;
   }
 
   * {
@@ -44,15 +44,16 @@
 @layer components {
   /* Card styles */
   .card {
-    background: var(--color-surface);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    padding: 1.5rem;
-    transition: box-shadow 0.2s ease;
+  background: var(--color-surface);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease;
+  border: 1px solid #333;
   }
 
   .card:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
   }
 
   /* Metric card */
