@@ -6,8 +6,9 @@ import os
 from datetime import datetime, timedelta
 
 # Streamlit Cloud用のパス設定
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models'))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(BASE_DIR, 'src'))          # dashboard/src/
+sys.path.append(os.path.join(BASE_DIR, 'src', 'models')) # dashboard/src/models/
 
 from models.coffee_impact import PBPEImpactEngine, FarmMetrics, CertificationLevel
 from models.carbon_sequestration import CarbonSequestrationEngine, SoilProfile, ClimateData, ManagementPractice, SoilType, ClimateZone
