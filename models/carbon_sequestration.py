@@ -1,4 +1,3 @@
-```python
 """
 PBPE Carbon Sequestration Model
 Advanced mathematical models for soil carbon dynamics
@@ -56,13 +55,13 @@ class ClimateData:
 @dataclass
 class ManagementPractice:
     """Agricultural management practices"""
-    tillage_intensity: float  # 0-1 (0=no-till, 1=conventional)
-    cover_crop_frequency: float  # 0-1
-    organic_amendment_rate_t_ha: float
-    mbtt55_applied: bool
-    mbtt55_application_rate_kg_ha: float
-    irrigation_efficiency: float  # 0-1
-    residue_retention_percent: float  # 0-100
+    tillage_intensity: float = 0.5  # 0-1 (0=no-till, 1=conventional)
+    cover_crop_frequency: float = 0.0  # 0-1
+    organic_amendment_rate_t_ha: float = 0.0
+    mbtt55_applied: bool = False
+    mbtt55_application_rate_kg_ha: float = 0.0
+    irrigation_efficiency: float = 0.8  # 0-1
+    residue_retention_percent: float = 50.0  # 0-100
 
 
 @dataclass
@@ -526,4 +525,3 @@ if __name__ == "__main__":
     print("\nCoffee Farm Sequestration (10 ha):")
     print(f"  Total Annual: {coffee_result['total_annual_sequestration_tco2e_ha']:.2f} tCO₂e/ha/year")
     print(f"  Farm Total: {coffee_result['total_sequestration_tco2e']:.2f} tCO₂e/year")
-```
