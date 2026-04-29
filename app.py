@@ -1,20 +1,13 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 import sys
 import os
-from pathlib import Path
+from datetime import datetime, timedelta
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path = [p for p in sys.path if 'dashboard' not in p]
 sys.path.insert(0, BASE_DIR)
-
-# ===== デバッグ =====
-try:
-    from models.carbon_sequestration import CarbonSequestrationEngine
-    st.write("✅ インポートOK")
-except Exception as e:
-    st.exception(e)
-st.stop()
-# ====================
 
 from models.coffee_impact import PBPEImpactEngine, FarmMetrics, CertificationLevel
 from models.carbon_sequestration import CarbonSequestrationEngine, SoilProfile, ClimateData, ManagementPractice, SoilType, ClimateZone
