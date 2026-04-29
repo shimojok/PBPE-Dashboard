@@ -7,15 +7,18 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
 # ===== デバッグ（確認後削除） =====
-import importlib.util
-spec = importlib.util.spec_from_file_location(
-    "carbon_sequestration",
-    os.path.join(BASE_DIR, 'models', 'carbon_sequestration.py')
-)
-mod = importlib.util.module_from_spec(spec)
+import importlib.util, sys
+
+# models パッケージとして登録
+models_path = os.path.join(BASE_DIR, 'models')
+
+import models
+st.write("models location:", models.__file__)
+st.write("models.__path__:", models.__path__)
+
 try:
-    spec.loader.exec_module(mod)
-    st.write("✅ carbon_sequestration 読み込みOK")
+    from models.carbon_sequestration import CarbonSequestrationEngine
+    st.write("✅ インポートOK")
 except Exception as e:
     st.exception(e)
 st.stop()
