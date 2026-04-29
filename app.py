@@ -7,23 +7,12 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 sys.path = [p for p in sys.path if 'dashboard' not in p]  # ← 追加
 
-# ===== デバッグ（確認後削除） =====
-import importlib.util, sys
-
-# models パッケージとして登録
-models_path = os.path.join(BASE_DIR, 'models')
-
-import models
-st.write("models location:", models.__file__)
-st.write("models.__path__:", models.__path__)
-
-try:
-    from models.carbon_sequestration import CarbonSequestrationEngine
-    st.write("✅ インポートOK")
-except Exception as e:
-    st.exception(e)
+# ===== デバッグ =====
+st.write("BASE_DIR:", BASE_DIR)
+st.write("sys.path:", sys.path)
+st.write("models dir:", os.listdir(os.path.join(BASE_DIR, 'models')))
 st.stop()
-# ==================================
+# ====================
 
 from models.coffee_impact import PBPEImpactEngine, FarmMetrics, CertificationLevel
 from models.carbon_sequestration import CarbonSequestrationEngine, SoilProfile, ClimateData, ManagementPractice, SoilType, ClimateZone
