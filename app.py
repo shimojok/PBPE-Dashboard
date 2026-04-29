@@ -7,11 +7,17 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
 # ===== デバッグ（確認後削除） =====
-st.write("BASE_DIR:", BASE_DIR)
-models_path = os.path.join(BASE_DIR, 'models')
-st.write("models exists:", os.path.exists(models_path))
-if os.path.exists(models_path):
-    st.write("models contents:", os.listdir(models_path))
+import importlib.util
+spec = importlib.util.spec_from_file_location(
+    "carbon_sequestration",
+    os.path.join(BASE_DIR, 'models', 'carbon_sequestration.py')
+)
+mod = importlib.util.module_from_spec(spec)
+try:
+    spec.loader.exec_module(mod)
+    st.write("✅ carbon_sequestration 読み込みOK")
+except Exception as e:
+    st.exception(e)
 st.stop()
 # ==================================
 
