@@ -9,6 +9,13 @@ from datetime import datetime, timedelta
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
+import os
+import streamlit as st
+st.write("BASE_DIR:", BASE_DIR)
+st.write("models dir exists:", os.path.exists(os.path.join(BASE_DIR, 'models')))
+st.write("files in models:", os.listdir(os.path.join(BASE_DIR, 'models')) if os.path.exists(os.path.join(BASE_DIR, 'models')) else "NOT FOUND")
+st.stop()
+
 from models.coffee_impact import PBPEImpactEngine, FarmMetrics, CertificationLevel
 from models.carbon_sequestration import CarbonSequestrationEngine, SoilProfile, ClimateData, ManagementPractice, SoilType, ClimateZone
 from models.financial_engine import FinancialEngine, BondParameters, MarketConditions, BondType, RiskProfile
