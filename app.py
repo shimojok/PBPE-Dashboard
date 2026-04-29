@@ -336,6 +336,3 @@ elif tab == "🌡️ Climate Impact":
 # フッター
 st.markdown("---")
 st.caption("© 2026 PBPE Initiative | Planetary Bio-Phenome Engine | Contact: info@terraviss.com")
-ENDOFFILE
-
-echo "✅ app.py created successfully!"
