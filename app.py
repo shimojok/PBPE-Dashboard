@@ -4,8 +4,8 @@ import os
 from pathlib import Path
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(BASE_DIR)
-sys.path = [p for p in sys.path if 'dashboard' not in p]  # ← 追加
+sys.path = [p for p in sys.path if 'dashboard' not in p]
+sys.path.insert(0, BASE_DIR)
 
 # ===== デバッグ =====
 st.write("BASE_DIR:", BASE_DIR)
