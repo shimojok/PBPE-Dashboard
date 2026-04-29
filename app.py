@@ -1,20 +1,19 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 import sys
 import os
-from datetime import datetime, timedelta
+from pathlib import Path
 
-# Streamlit Cloud用のパス設定
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
-import os
-import streamlit as st
+# ===== デバッグ（確認後削除） =====
 st.write("BASE_DIR:", BASE_DIR)
-st.write("models dir exists:", os.path.exists(os.path.join(BASE_DIR, 'models')))
-st.write("files in models:", os.listdir(os.path.join(BASE_DIR, 'models')) if os.path.exists(os.path.join(BASE_DIR, 'models')) else "NOT FOUND")
+models_path = os.path.join(BASE_DIR, 'models')
+st.write("models exists:", os.path.exists(models_path))
+if os.path.exists(models_path):
+    st.write("models contents:", os.listdir(models_path))
 st.stop()
+# ==================================
 
 from models.coffee_impact import PBPEImpactEngine, FarmMetrics, CertificationLevel
 from models.carbon_sequestration import CarbonSequestrationEngine, SoilProfile, ClimateData, ManagementPractice, SoilType, ClimateZone
