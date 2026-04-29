@@ -1,4 +1,3 @@
-```python
 """
 PBPE Financial Engine
 Advanced financial modeling for climate finance instruments
@@ -531,4 +530,3 @@ if __name__ == "__main__":
     print(f"  5-Year ROI: {roi['roi_5yr_percent']:.1f}%")
     print(f"  NPV: ${roi['npv_per_ha']:.2f}/ha")
     print(f"  IRR: {roi['irr_percent']:.1f}%")
-```
