@@ -11,7 +11,7 @@ sys.path.append(os.path.join(BASE_DIR, 'dashboard', 'src'))
 sys.path.append(os.path.join(BASE_DIR, 'dashboard', 'src', 'models'))
 
 from models.coffee_impact import PBPEImpactEngine, FarmMetrics, CertificationLevel
-from models.carbon_sequestration import CarbonSequestrationEngine, SoilProfile, ClimateData, ManagementPractice, SoilType, ClimateZone
+from carbon_sequestration import CarbonSequestrationEngine, SoilProfile, ClimateData, ManagementPractice, SoilType, ClimateZone
 from models.financial_engine import FinancialEngine, BondParameters, MarketConditions, BondType, RiskProfile
 
 # ページ設定
