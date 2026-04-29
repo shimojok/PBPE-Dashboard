@@ -8,9 +8,11 @@ sys.path = [p for p in sys.path if 'dashboard' not in p]
 sys.path.insert(0, BASE_DIR)
 
 # ===== デバッグ =====
-st.write("BASE_DIR:", BASE_DIR)
-st.write("sys.path:", sys.path)
-st.write("models dir:", os.listdir(os.path.join(BASE_DIR, 'models')))
+try:
+    from models.carbon_sequestration import CarbonSequestrationEngine
+    st.write("✅ インポートOK")
+except Exception as e:
+    st.exception(e)
 st.stop()
 # ====================
 
