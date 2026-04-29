@@ -5,6 +5,7 @@ from pathlib import Path
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
+sys.path = [p for p in sys.path if 'dashboard' not in p]  # ← 追加
 
 # ===== デバッグ（確認後削除） =====
 import importlib.util, sys
