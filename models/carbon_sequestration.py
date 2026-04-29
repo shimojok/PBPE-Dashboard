@@ -1,5 +1,5 @@
 """
-PBPE Carbon Sequestration Model
+ PBPE Carbon Sequestration Model
 Advanced mathematical models for soil carbon dynamics
 """
 
