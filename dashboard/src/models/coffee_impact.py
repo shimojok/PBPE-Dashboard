@@ -46,8 +46,8 @@ class FarmMetrics:
     soil_depth_cm: float = 30.0
     
     # Disease metrics
-    rust_incidence: float  # 0-1
-    rust_severity: float   # 0-1
+    rust_incidence: float = 0.0  # 0-1
+    rust_severity: float = 0.0   # 0-1
     other_diseases: Dict[str, float] = field(default_factory=dict)
     
     # MBT55 application
