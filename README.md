@@ -1,3 +1,13 @@
+> [!NOTE]
+> **This repository has been archived.**
+> 
+> このリポジトリはアーカイブされました。最新のPBPE気候変動ファイナンスエンジンは以下の後継リポジトリを参照してください。
+> 
+> 💰 [**PBPE-Finance**](https://github.com/shimojok/PBPE-Finance) — 4-layer dynamic pricing, Scope 3 calculation, m-ROI, Sankey capital flow
+> 
+
+---
+
 # PBPE-Dashboard: Planetary Bio-Phenome Engine
 
 ## 🌍 Climate Finance Market Creation Through Regenerative Agriculture
