@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PBPE · BioNexus Holdings</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+:root {
+  --bg:#0D1117; --bg2:#161B22; --bg3:#21262D; --border:#30363D;
+  --green:#39D353; --amber:#F0A500; --blue:#58A6FF; --teal:#3DCFCF;
+  --text:#E6EDF3; --text2:#8B949E; --text3:#6E7681;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+canvas#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:0.55;}
+.content{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;padding:60px 24px 40px;text-align:center;max-width:680px;width:100%;}
+.logo-wrap{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.logo-dot{width:10px;height:10px;background:var(--green);border-radius:50%;animation:pdot 2s infinite;flex-shrink:0;}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
+.logo-text{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--text2);letter-spacing:.14em;text-transform:uppercase;}
+.title{font-family:'JetBrains Mono',monospace;font-size:clamp(26px,5vw,46px);font-weight:700;line-height:1.1;margin-bottom:6px;background:linear-gradient(135deg,var(--green) 0%,var(--amber) 50%,var(--blue) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em;}
+.title-sub{font-family:'JetBrains Mono',monospace;font-size:clamp(10px,1.8vw,13px);font-weight:500;color:var(--text3);letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px;}
+.tagline{font-size:clamp(12px,1.8vw,14px);color:var(--text2);line-height:1.7;margin-bottom:32px;max-width:520px;}
+.tagline b{color:var(--text);font-weight:600;}
+.eq{display:inline-block;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:2px 10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);margin:0 2px;white-space:nowrap;}
+.stats-row{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:28px;}
+.stat{text-align:center;}
+.stat-val{font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:700;line-height:1;margin-bottom:3px;}
+.stat-lbl{font-size:9px;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;}
+.stat-div{width:1px;background:var(--border);align-self:stretch;}
+.domain-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:32px;}
+.dp{font-size:10px;font-weight:600;font-family:'JetBrains Mono',monospace;padding:4px 10px;border-radius:20px;border:1px solid;animation:fadein .6s ease both;}
+.dp:nth-child(1){color:var(--green);border-color:#196127;background:#39D35310;animation-delay:.1s}
+.dp:nth-child(2){color:var(--blue);border-color:#1F4A8C;background:#58A6FF10;animation-delay:.2s}
+.dp:nth-child(3){color:#BC8CFF;border-color:#4A2A7A;background:#BC8CFF10;animation-delay:.3s}
+.dp:nth-child(4){color:var(--teal);border-color:#1A4040;background:#3DCFCF10;animation-delay:.4s}
+.dp:nth-child(5){color:var(--amber);border-color:#7D4E00;background:#F0A50010;animation-delay:.5s}
+.dp:nth-child(6){color:#C9A84C;border-color:#5A3A00;background:#C9A84C10;animation-delay:.6s}
+.dp:nth-child(7){color:#F85149;border-color:#5A1A1A;background:#F8514910;animation-delay:.7s}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.lang-row{display:flex;gap:16px;margin-bottom:32px;flex-wrap:wrap;justify-content:center;}
+.lang-btn{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 32px 28px;border-radius:14px;cursor:pointer;text-decoration:none;border:1px solid var(--border);background:var(--bg2);transition:all .25s cubic-bezier(.16,1,.3,1);min-width:190px;overflow:hidden;}
+.lang-btn::before{content:'';position:absolute;inset:0;border-radius:14px;opacity:0;transition:opacity .25s;}
+.lang-btn.en::before{background:linear-gradient(135deg,#1C2A1C,#1A1200);}
+.lang-btn.ja::before{background:linear-gradient(135deg,#0A1525,#1A0A2A);}
+.lang-btn:hover{transform:translateY(-5px);}
+.lang-btn.en:hover{border-color:var(--green);box-shadow:0 20px 60px #39D35322;}
+.lang-btn.ja:hover{border-color:var(--blue);box-shadow:0 20px 60px #58A6FF22;}
+.lang-btn:hover::before{opacity:1;}
+.btn-flag{font-size:30px;line-height:1;position:relative;z-index:1;}
+.btn-label{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;position:relative;z-index:1;transition:color .2s;}
+.lang-btn.en .btn-label{color:var(--green);}
+.lang-btn.ja .btn-label{color:var(--blue);}
+.btn-sub{font-size:10px;color:var(--text3);position:relative;z-index:1;font-family:'JetBrains Mono',monospace;}
+.btn-arrow{position:absolute;bottom:12px;right:14px;font-size:14px;opacity:0;transform:translateX(-6px);transition:all .2s;}
+.lang-btn.en .btn-arrow{color:var(--green);}
+.lang-btn.ja .btn-arrow{color:var(--blue);}
+.lang-btn:hover .btn-arrow{opacity:1;transform:translateX(0);}
+.footer{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;}
+.footer .sep{color:var(--border);}
+.topbar{position:fixed;top:0;left:0;right:0;height:44px;background:#0D111790;backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;z-index:100;gap:12px;}
+.tb-logo{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--green);letter-spacing:.08em;}
+.tb-sep{flex:1;}
+.tb-badge{background:var(--green);color:#000;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;}
+.tb-tag{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="topbar">
+  <div class="logo-dot" style="width:7px;height:7px"></div>
+  <div class="tb-logo">BioNexus Holdings</div>
+  <div class="tb-sep"></div>
+  <div class="tb-tag">PBPE · Plant-Based Planet Economy</div>
+  <div class="tb-badge">LIVE</div>
+</div>
+<div class="content">
+  <div class="logo-wrap">
+    <div class="logo-dot"></div>
+    <div class="logo-text">BioNexus Holdings · PBPE Dashboard</div>
+  </div>
+  <div class="title">Plant-Based<br>Planet Economy</div>
+  <div class="title-sub">MBT Sustainable Cycle · Hypercycle Model</div>
+  <div class="tagline">
+    A single gateway — <span class="eq">Agri-Trade ≡ Carbon Trading</span> — drives the
+    <b>MBT Sustainable Cycle</b> to simultaneously solve <b>7 global challenges</b>:
+    food security, nutrition, healthcare costs, GHG emissions,
+    food enterprise profitability, investor returns, and climate finance liquidity.
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-val" style="color:var(--green)">+30%</div><div class="stat-lbl">Yield Stability</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-val" style="color:var(--blue)">-$2.3T</div><div class="stat-lbl">Healthcare Savings</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-val" style="color:var(--teal)">-22%</div><div class="stat-lbl">GHG Reduction</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-val" style="color:var(--amber)">$790B+</div><div class="stat-lbl">Climate Finance TAM</div></div>
+  </div>
+  <div class="domain-pills">
+    <div class="dp">① Food Security</div>
+    <div class="dp">② Nutrition</div>
+    <div class="dp">③ Healthcare Cost</div>
+    <div class="dp">④ GHG Reduction</div>
+    <div class="dp">⑤ Food Enterprise Revenue</div>
+    <div class="dp">⑥ Investor Returns</div>
+    <div class="dp">⑦ Climate Finance</div>
+  </div>
+  <div class="lang-row">
+    <a class="lang-btn en" href="en.html">
+      <div class="btn-flag">🇺🇸</div>
+      <div class="btn-label">English</div>
+      <div class="btn-sub">Full Dashboard →</div>
+      <div class="btn-arrow">→</div>
+    </a>
+    <a class="lang-btn ja" href="ja.html">
+      <div class="btn-flag">🇯🇵</div>
+      <div class="btn-label">日本語</div>
+      <div class="btn-sub">ダッシュボード全体 →</div>
+      <div class="btn-arrow">→</div>
+    </a>
+  </div>
+  <div class="footer">
+    <span>© 2025 BioNexus Holdings</span>
+    <span class="sep">·</span>
+    <span>PBPE · MBT Sustainable Cycle</span>
+    <span class="sep">·</span>
+    <span>AGRIX · HealthBook · PBPE-Marketplace</span>
+  </div>
+</div>
+<script>
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+const OUTER=[
+  {color:'#39D353',angle:-90},{color:'#58A6FF',angle:-18},
+  {color:'#BC8CFF',angle:54},{color:'#3DCFCF',angle:126},
+  {color:'#C9A84C',angle:198},{color:'#F85149',angle:270},
+  {color:'#FF9F43',angle:342}
+];
+function draw(ts){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const cx=canvas.width/2,cy=canvas.height/2,R=Math.min(cx,cy)*.52,rc=56,ro=35;
+  ctx.fillStyle='#30363D18';
+  for(let gx=0;gx<canvas.width;gx+=48)for(let gy=0;gy<canvas.height;gy+=48){ctx.beginPath();ctx.arc(gx,gy,1,0,Math.PI*2);ctx.fill();}
+  ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.strokeStyle='#30363D40';ctx.lineWidth=1;ctx.stroke();
+  const ar=((ts*.0002)%(Math.PI*2));
+  ctx.beginPath();ctx.arc(cx,cy,R,ar,ar+Math.PI*1.6);ctx.strokeStyle='#F0A50028';ctx.lineWidth=2;ctx.stroke();
+  OUTER.forEach((n,i)=>{
+    const ang=(n.angle+ts*.008)*Math.PI/180;
+    const nx=cx+Math.cos(ang)*R,ny=cy+Math.sin(ang)*R;
+    const ph=((ts*.0005+i/7)%1+1)%1;
+    const px=cx+(nx-cx)*ph,py=cy+(ny-cy)*ph;
+    const bg=ctx.createRadialGradient(px,py,0,px,py,9);
+    bg.addColorStop(0,n.color+'BB');bg.addColorStop(.5,n.color+'35');bg.addColorStop(1,'transparent');
+    ctx.beginPath();ctx.arc(px,py,9,0,Math.PI*2);ctx.fillStyle=bg;ctx.fill();
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(nx,ny);ctx.strokeStyle=n.color+'15';ctx.lineWidth=1.5;ctx.stroke();
+    const gl=ctx.createRadialGradient(nx,ny,0,nx,ny,ro*2);
+    gl.addColorStop(0,n.color+'18');gl.addColorStop(1,'transparent');
+    ctx.beginPath();ctx.arc(nx,ny,ro*2,0,Math.PI*2);ctx.fillStyle=gl;ctx.fill();
+    ctx.beginPath();ctx.arc(nx,ny,ro,0,Math.PI*2);ctx.fillStyle='#161B22BB';ctx.fill();
+    ctx.strokeStyle=n.color+'55';ctx.lineWidth=1.5;ctx.stroke();
+  });
+  const pulse=1+Math.sin(ts*.002)*.07;
+  [rc*pulse+16,rc*pulse+28].forEach((rr,i)=>{
+    ctx.beginPath();ctx.arc(cx,cy,rr,0,Math.PI*2);ctx.strokeStyle='#F0A500'+(i===0?'28':'12');ctx.lineWidth=1.5;ctx.stroke();
+  });
+  const cg=ctx.createRadialGradient(cx-rc*.2,cy-rc*.2,rc*.1,cx,cy,rc);
+  cg.addColorStop(0,'#2A1A00');cg.addColorStop(1,'#1A1000');
+  ctx.beginPath();ctx.arc(cx,cy,rc*pulse,0,Math.PI*2);ctx.fillStyle=cg;ctx.fill();
+  ctx.strokeStyle='#F0A500AA';ctx.lineWidth=2;ctx.stroke();
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
